@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/f3f741aedb.js" crossorigin="anonymous"></script>
+    <title>Document</title>
+    <style>
+        #container{
+            display: flex;
+            width: 90%;
+            height: 500px;
+            margin: auto;
+            justify-content: space-between;
+            margin-top: 30px;
+            box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+            
+        }
+        #topDiv{
+          width: 70%;
+          height: 80px;
+          margin: auto;
+          margin-top: 20px;
+          padding-top: 40px;
+          text-align: center;
+          background-image: url("https://i.gifer.com/GIWH.gif");
+          background-repeat: repeat;
+          border-radius: 10px;
+         
+        }
+        #topDiv > label{
+            font-family: sans-serif;
+            font-size: 25px;
+        }
+        #topDiv > input{
+            padding: 10px 40px;
+            margin-right: 10px;
+            
+        }
+        #topDiv > button{
+            padding: 13px 30px;
+            margin-right: 10px;
+            border: none;
+            font-weight: bold;
+            background-color: rgb(182, 44, 44);
+            border-radius: 10px;
+            color: white;
+        }
+        #tempDiv{
+            width: 50%;
+            height: 100%;
+
+            
+        }
+        #tempData{
+            width: 100%;
+            height: 90px;
+            display: flex;
+            justify-content: space-between;
+            padding-left: 10px;
+            padding-right: 20px;
+            background-color: #08345b;
+            font-weight: bolder;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+           
+        }
+        #tempData > img{
+            width: 50px;
+            height: 50px;
+            padding-right: 20px;
+            padding-top: 7px;
+          
+        }
+        #tempData > p{
+            font-family: monospace;
+            font-weight: bold;
+            font-size: 20px;
+            color: white;
+        }
+        #extraInfoDiv{
+            width: 100%;
+            height: 365px;
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+            grid-gap: 10px;
+            padding: 20px;
+            background-color: #2df8b8;
+            /* justify-content: space-around; */
+        }
+        #extraInfoDiv > .item{
+            display: flex;
+            width: 240px;
+            height: 100px;
+            justify-content: space-around;
+             align-items: center;
+             box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+             border-radius: 20px;
+        }
+        #extraInfoDiv > .item >i{
+            padding: 10px;
+           
+        
+        }
+        #extraInfoDiv > .item >p{
+            margin-top: 20px;
+            font-weight: bold;
+            font-family: monospace;
+            font-size: 23px;
+           
+             
+        }
+        #sunset{
+            width: 40px;
+            height: 40px;
+            margin-top: -20px;
+        }
+        #sevenDayDiv{
+            width: 100%;
+            height: 150px;
+            margin: auto;
+            margin-top: 30px;
+            display: flex;
+            justify-content: space-between;
+            background-color: #2df8b8;
+            
+        }
+        #sevenDayDiv > .childDiv{
+            width: 13%;
+            height: 100%;
+            text-align: center;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+            background-color: #2df8b8;
+           
+        }
+        .childDiv > img{
+             width: 50px;
+             height: 50px;
+        }
+        .childDiv > .maxTemp{
+            margin-top: 5px;
+            margin-bottom: -15px;
+        }
+        .childDiv > p{
+            font-family: monospace;
+            font-size: 24px;
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+        #SevenDayTitle{
+            font-weight: bold;
+            font-family: monospace;
+            font-size: 30px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+     <div id="topDiv">
+         <label for="">Enter City Name : </label>
+        <input type="text" id="city">
+        <button onclick="getWeather()">Get Temp</button>
+        <button onclick="getMap()">Get Map</button>
+     </div>
+    <div id="container">
+        <div id="tempDiv">
+            <div id="tempData">
+                <p> City Name : Delhi</p>
+                 <p> Country : In</p>
+                 <p> Max_Temp : 18°C
+                 </p>
+                 <p>Min_Temp : 13°C</p>
+               
+            </div>
+            <div id="extraInfoDiv">
+                  <div class="item">
+                    <i class='fas fa-sun' style='font-size:30px'  ></i>
+                    <p id="sunrise">7:11</p>
+                  </div>
+                  <div class="item">
+                    <img src="sunset.png" alt="" id="sunset">
+                    <p id="sunSet">7:11</p>
+                  </div>
+                  <div class="item">
+                    <i class="fas fa-wind" style="font-size: 30px;"></i>
+                    <p id="wind">7:11</p>
+                  </div>
+                  <div class="item">
+                    <img src="" alt="" id="cloudIcon">
+                    <p id="cloud">Broken Clouds</p>
+                  </div>
+            </div>
+        </div>
+        <div>
+            <div class="mapouter"><div class="gmap_canvas"><iframe width="600" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=Delhi&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.whatismyip-address.com/divi-discount/"></a><br><style>.mapouter{position:relative;text-align:right;height:500px;width:600px;}</style><a href="https://www.embedgooglemap.net">google map html embed</a><style>.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:600px;}</style></div></div>
+           </div>
+    </div>
+      <h1 id="SevenDayTitle">Next 7 Days Forecast</h1>
+     <div id="sevenDayDiv">
+
+     </div>
+
+</body>
+</html>
+<script>
+    // getting current wheather 
+    async function getWeather(){
+     let cityName= document.querySelector("#city").value;
+     try{
+    let url=`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=6ff1648d640ad3c6260db1ab0fecd897&units=metric`;
+     let request= await fetch(url);
+     var response= await request.json();
+     let name= response["name"];
+     let lon= response['coord']['lon'];
+     let lat= response['coord']['lat'];
+     // again making new api request for 7day forcast
+     let url2=`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minute,hourly&appid=6ff1648d640ad3c6260db1ab0fecd897&units=metric`;
+
+     let request2= await fetch(url2);
+     let response2= await  request2.json();
+     show7DayForecase(response2);
+     showWeather(response);
+     }
+     catch(error){
+         console.log(error)
+     }
+
+
+    }
+
+    function showWeather(data){
+        document.querySelector("#tempData").innerHTML="";
+        console.log(data)
+        let cityName=document.createElement("p");
+         cityName.textContent=`City_Name :  ${data.name}`;
+        let country=document.createElement("p");
+        country.textContent=`Country  : ${data.sys.country}`;
+        let max_temp=document.createElement("p");
+        max_temp.textContent=`Max_Temp:  ${data.main.temp_max}°C`;
+        let min_temp=document.createElement("p");
+        min_temp.textContent=`Min_Temp:  ${data.main.temp_min}°C`;
+        let sunrise= data.sys.sunrise;
+        let sunset= data.sys.sunset;
+        let date1= new Date(sunrise*1000);
+        let date2= new Date(sunset*1000);
+        let time1= `${date1.getHours()} : ${date1.getMinutes()} AM`;
+        let time2= `${date2.getHours()} : ${date2.getMinutes()} PM`;
+        let windSpeed= data.wind.speed;
+        let cloudCondtion= data.weather[0].description;
+        let cloudIconCode= data.weather[0].icon;
+        document.querySelector("#cloudIcon").src="http://openweathermap.org/img/wn/" + cloudIconCode + "@2x.png";
+        document.querySelector("#cloud").textContent=cloudCondtion;
+        
+        console.log(time2)
+        document.querySelector("#sunrise").textContent=time1;
+        document.querySelector("#sunSet").textContent=time2;
+        document.querySelector("#wind").textContent=windSpeed+"Km/h";
+        document.querySelector("#tempData").append(cityName,country,max_temp,min_temp);
+      
+    }
+
+    function show7DayForecase(data){
+          var parent= document.querySelector("#sevenDayDiv");
+          parent.innerHTML="";
+          
+          var dailyData= data.daily;
+          console.log(dailyData);
+          for( let i=0;i<dailyData.length-1;i++){
+            var childDiv=document.createElement("div");
+                childDiv.setAttribute("class","childDiv");
+                var dayName=document.createElement("p");
+                // displaying day 
+                var date = new Date(dailyData[i].dt*1000);
+                    var dayIndex= date.getDay();
+                    if(dayIndex==0){
+                        dayName.textContent="Sun";
+                    }
+                    else if(dayIndex==1){
+                        dayName.textContent="Mon";
+                    }
+                    else if(dayIndex==2){
+                        dayName.textContent="Tue";
+                    }
+                    else if(dayIndex==3){
+                        dayName.textContent="Wed";
+                    }
+                    else if(dayIndex==4){
+                        dayName.textContent="Thu";
+                    }
+                    else if(dayIndex==5){
+                        dayName.textContent="Fri";
+                    }
+                    else if(dayIndex==6){
+                        dayName.textContent="Sat";
+                    }
+                var cloudImg=document.createElement("img");
+               cloudImg.src="http://openweathermap.org/img/wn/" + dailyData[i].weather[0].icon + "@2x.png"
+                var maxtemp=document.createElement("h3");
+                 maxtemp.setAttribute("class","maxTemp")
+                  maxtemp.textContent=`${dailyData[i].temp.max}°C`;
+                var mintemp=document.createElement("h3");
+                mintemp.setAttribute("class","minTemp")
+                mintemp.textContent=`${dailyData[i].temp.min}°C`;
+               childDiv.append(dayName,cloudImg,maxtemp,mintemp);
+               parent.append(childDiv);
+          }
+          
+          
+    }
+
+    function getMap(){
+        let cityName= document.querySelector("#city").value;
+        var iframe= document.querySelector("#gmap_canvas");
+     iframe.src= `https://maps.google.com/maps?q=${cityName} &t=&z=13&ie=UTF8&iwloc=&output=embed`;
+    }
+    
+</script>
